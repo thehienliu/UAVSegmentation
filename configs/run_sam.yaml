@@ -1,0 +1,22 @@
+model: 
+  embed_dim: 768
+  num_heads: 12
+  depth: 12
+  extract_layer: [3, 6, 9, 12]
+  encoder_global_attn_indexes: [2, 5, 8, 11]
+  drop_rate: 0.1
+  num_classes: 8
+  ckpt_path: /content/sam_vit_b_01ec64.pth
+
+transform:
+  apply_augmentation_ratio: 0.5
+  input_shape: 256
+
+training:
+  train_dir: "/content/uavid_dataset/uavid_train"
+  val_dir: "/content/uavid_dataset/uavid_val"
+  lr: 0.003
+  batch_size: 16
+  mixed_precision: True
+  epochs: 10
+  eval_every: 2
